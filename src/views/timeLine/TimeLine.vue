@@ -3,6 +3,7 @@
     <div id="particles"></div>
     <el-container>
       <el-main>
+        <!-- 时间流 -->
         <div class="timeLineContent">
           <el-timeline>
             <el-timeline-item
@@ -34,6 +35,7 @@ import particlesJson from "../../../public/particles.json";
 export default {
   data() {
     return {
+      //文章列表
       blogBaseList: []
     };
   },
@@ -41,11 +43,12 @@ export default {
     userInfo
   },
   methods: {
+    //获取文章列表数据
     async getArticleList() {
       const { data: res } = await getArticleList();
       this.blogBaseList = res.result_data.items;
-      // this.articleNum = res.total_row;
     },
+    //点击前往详情页
     goArticle(item) {
       this.$router.push(`/article/${item.id}`);
     }
@@ -71,6 +74,7 @@ export default {
     this.getArticleList();
   },
   mounted() {
+    //粒子特效配置
     require("particles.js");
     // eslint-disable-next-line no-undef
     particlesJS("particles", particlesJson);

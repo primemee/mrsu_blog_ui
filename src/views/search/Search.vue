@@ -144,13 +144,18 @@ import particlesJson from "../../../public/particles.json";
 export default {
   data() {
     return {
+      //搜索结果
       blogBaseList: [],
+      //文章推荐
       blogRecomList: [],
       //页码
       currentPage: 1,
+      //页数
       PageSize: 5,
       row_start_number: 0,
+      //文章总数
       articleNum: 0,
+      //是否有搜索结果
       isSearchResult: true
     };
   },
@@ -158,15 +163,18 @@ export default {
     userInfo
   },
   methods: {
+    //页码数改变
     handleCurrentChange(value) {
       this.currentPage = value;
       this.row_start_number = (value - 1) * this.PageSize;
       this.searchArticle();
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
+    //文章详情
     toArticleDetail(id) {
       this.$router.push(`/article/${id}`);
     },
+    //文章搜索
     async searchArticle() {
       const { data: res } = await articleSearchByTitle({
         keyword: this.$route.query.q,
@@ -209,12 +217,14 @@ export default {
     }
   },
   mounted() {
+    //搜索this.$route.query.q
     this.searchArticle(this.$route.query.q);
     require("particles.js");
     // eslint-disable-next-line no-undef
     particlesJS("particles", particlesJson);
   },
   watch: {
+    //监听this.$route.query.q值改变
     $route(v) {
       this.searchArticle(v.query.q);
     }
@@ -295,6 +305,7 @@ export default {
   }
   .blogRecomList {
     margin-top: 20px;
+    cursor: pointer;
     .recTitle {
       display: flex;
       position: relative;

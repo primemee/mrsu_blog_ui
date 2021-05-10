@@ -50,18 +50,15 @@
         </router-link>
       </el-col>
       <el-col :span="2">
-        <!-- <router-link to="/messageBoard"> -->
-        <!-- <div class="navItem">
-            <i class="el-icon-s-promotion"></i>
-            <span class="navFont">更多</span>
-          </div> -->
         <el-dropdown>
           <span class="el-dropdown-link">
             <i class="el-icon-s-promotion"></i>
             更多<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>GitHub地址</el-dropdown-item>
+            <a href="https://github.com/primemee/mrsu_blog_ui" target="_blank">
+              <el-dropdown-item>项目仓库</el-dropdown-item>
+            </a>
           </el-dropdown-menu>
         </el-dropdown>
         <!-- </router-link> -->
@@ -76,20 +73,20 @@ import { getUserInfoById } from "../../api/index.js";
 export default {
   data() {
     return {
+      //搜索输入内容
       inputSearch: "",
+      //个人基本信息
       baseForm: {}
     };
   },
   methods: {
+    //获取个人信息数据
     async getUserInfo() {
       const { data: res } = await getUserInfoById(2);
       this.baseForm = res.result_data;
     },
+    //根据文章标题触发搜索
     searchByTitle() {
-      // const { data: res } = await articleSearchByTitle({
-      //   keyword: this.inputSearch,
-      //   status: 0,
-      // });
       this.$router.push({
         path: "/search",
         query: {

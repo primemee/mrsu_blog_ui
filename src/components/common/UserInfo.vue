@@ -10,16 +10,6 @@
           />
         </div>
         <p @click="clickToMe">{{ baseForm.nickname }}</p>
-        <!-- <div class="articleTagNum">
-                  <div class="articleNum">
-                    <h3>{{ articleNum }}</h3>
-                    <p>Article</p>
-                  </div>
-                  <div class="tagNum">
-                    <h3>99</h3>
-                    <p>Tag</p>
-                  </div>
-                </div> -->
       </div>
       <!-- TOP 5 -->
       <div class="category">
@@ -49,18 +39,6 @@
             >{{ item.title }}</a
           >
         </div>
-        <!-- <div class="tagList">
-                  <el-tag type="success">123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>124545645563</el-tag>
-                  <el-tag>123</el-tag>
-                  <el-tag>123</el-tag>
-                </div> -->
       </div>
       <!-- 友情链接 -->
       <div class="friendLink">
@@ -160,6 +138,7 @@ export default {
           id: 10
         }
       ],
+      //tag颜色数组
       colorList: [
         "494ca2",
         "0075f6",
@@ -184,12 +163,14 @@ export default {
       ],
       //博文数量
       articleNum: 0,
-      tagNum: 0,
+      //文章列表
       articleList: [],
+      //个人基本信息
       baseForm: {}
     };
   },
   methods: {
+    //获取文章列表数据
     async getArticleList() {
       const { data: res } = await getArticleList({
         status: 0,
@@ -199,6 +180,7 @@ export default {
       });
       this.articleList = res.result_data.items;
     },
+    //获取个人信息数据
     async getUserInfo() {
       const { data: res } = await getUserInfoById(2);
       this.baseForm = res.result_data;
@@ -226,6 +208,7 @@ export default {
       this.colorList[this.random(0, max)];
       return "#" + this.colorList[this.random(0, max)];
     },
+    //触发搜索
     getSearch(item) {
       this.$router.push({
         path: "/search",
@@ -234,9 +217,11 @@ export default {
         }
       });
     },
+    //文章详情
     goArticle(item) {
       this.$router.push(`/article/${item.id}`);
     },
+    //关于我
     clickToMe() {
       this.$router.push("/aboutMe");
     }
@@ -246,6 +231,7 @@ export default {
     this.getUserInfo();
   },
   mounted() {
+    //在下次 DOM 更新循环结束之后执行延迟回调  当数据更新了，在dom中渲染后，自动执行该函数
     this.$nextTick(() => {
       coldTag.winOnload();
     });

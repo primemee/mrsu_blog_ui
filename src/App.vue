@@ -56,12 +56,13 @@ export default {
     };
   },
   methods: {
+    //回到顶部如果距离顶部大于150则出现按钮
     handleScroll() {
       let scrolltop =
         document.documentElement.scrollTop || document.body.scrollTop;
       scrolltop > 150 ? (this.gotop = true) : (this.gotop = false);
     },
-    //回到顶部
+    //回到顶部效果
     goToTop() {
       let top = document.documentElement.scrollTop || document.body.scrollTop;
       // 定时器实现滚动效果
@@ -78,12 +79,12 @@ export default {
     NavBar
   },
   created() {
-    //看板娘
+    //看板娘配置
     setTimeout(() => {
       window.L2Dwidget.init({
         pluginRootPath: "../live2dw/",
         pluginJsPath: "lib/",
-        pluginModelPath: "live2d-widget-model-haru_2/assets/", //中间这个haru_2就是你的老婆,想换个老婆,换这个就可以了
+        pluginModelPath: "live2d-widget-model-haru_2/assets/", //模型
         tagMode: false,
         debug: false,
         model: {
@@ -91,7 +92,7 @@ export default {
             "../live2dw/live2d-widget-model-haru_2/assets/haru02.model.json"
         },
         display: { position: "right", width: 110, height: 300 }, //调整大小,和位置
-        mobile: { show: true }, //要不要盯着你的鼠标看
+        mobile: { show: true }, //是否盯着鼠标看
         log: false
       });
     }, 500);

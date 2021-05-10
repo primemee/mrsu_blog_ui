@@ -14,22 +14,6 @@ const routes = [
       title: "主页" + blogName
     }
   },
-  // {
-  //   path: "/categories",
-  //   name: "Categories",
-  //   component: () => import("@/views/categories/Categories"),
-  //   meta: {
-  //     title: "分类" + blogName
-  //   }
-  // },
-  {
-    path: "/tag",
-    name: "Tag",
-    component: () => import("@/views/tag/Tag"),
-    meta: {
-      title: "标签" + blogName
-    }
-  },
   {
     path: "/search",
     name: "Search",

@@ -61,7 +61,9 @@ import particlesJson from "../../../public/particles.json";
 export default {
   data() {
     return {
+      //文章详情对象
       articleDetail: {},
+      //标签数组
       classify: []
     };
   },
@@ -70,12 +72,14 @@ export default {
     recomArticle
   },
   methods: {
+    //根据文章id获取详情
     async getArticleListById() {
       let that = this;
       const { data: res } = await getArticleListById(this.$route.params.id);
       that.articleDetail = res.result_data;
       that.classify = that.articleDetail.classify.split(",");
       // console.log(that.classify);
+      //使用定时器来判断文章阅读量，如果在当前页面停留5秒则算1阅读量
       setTimeout(function() {
         articleNumUpd({
           id: that.articleDetail.id,

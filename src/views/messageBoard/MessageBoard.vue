@@ -23,6 +23,7 @@ export default {
     };
   },
   methods: {
+    //初始化Valine留言板及配置
     init() {
       new this.Valine({
         el: "#vcomments",
@@ -46,11 +47,11 @@ export default {
       this.Valine = res.default;
       this.init();
     });
+    //；粒子特效配置
     require("particles.js");
     // eslint-disable-next-line no-undef
     particlesJS("particles", particlesJson);
-  },
-  created() {}
+  }
 };
 </script>
 
@@ -100,7 +101,6 @@ export default {
 .v {
   position: relative;
 }
-
 </style>
 <style lang="scss">
 .messageBoard .vtime {

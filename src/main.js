@@ -6,16 +6,17 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import APlayer from "@moefe/vue-aplayer";
+// import APlayer from "@moefe/vue-aplayer";
 
-Vue.use(APlayer, {
-  defaultCover: "https://github.com/u3u.png",
-  productionTip: true
-});
+// Vue.use(APlayer, {
+//   defaultCover: "https://github.com/u3u.png",
+//   productionTip: true
+// });
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI, { size: "small", zIndex: 3000 });
 
+//路由导航前置守卫
 router.beforeEach((to, from, next) => {
   //进度条开启
   NProgress.start();

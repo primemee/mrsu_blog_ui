@@ -46,6 +46,7 @@ export default {
     this.getArticleList();
   },
   methods: {
+    //请求文章列表数据
     async getArticleList() {
       const { data: res } = await getArticleList({
         type: 0,
@@ -55,6 +56,7 @@ export default {
       });
       this.blogBaseList = res.result_data.items;
     },
+    //文章详情页
     toArticleDetail(id) {
       this.$router.push(`/article/${id}`);
     }

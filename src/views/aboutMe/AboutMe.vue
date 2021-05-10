@@ -1,5 +1,6 @@
 <template>
   <div class="aboutMe">
+    <!-- 粒子背景特效 -->
     <div id="particles"></div>
     <el-container>
       <el-main>
@@ -78,7 +79,7 @@
               </div>
             </el-card>
           </div>
-
+          <!-- 右侧卡片 -->
           <userInfo />
         </div>
       </el-main>
@@ -94,24 +95,9 @@ import { getUserInfoById } from "@/api/index.js";
 export default {
   data() {
     return {
-      activities: [
-        {
-          content: "基本信息",
-          size: "large",
-          type: "primary",
-          href: "#baseInfo"
-        },
-        {
-          content: "工作经历",
-          color: "#0bbd87",
-          href: "#workInfo"
-        },
-        {
-          content: "项目经历",
-          href: "#projectInfo"
-        }
-      ],
+      //个人基本信息
       baseForm: {},
+      //个人简介
       baseContent1: "",
       baseContent2: ""
     };
@@ -123,6 +109,7 @@ export default {
     this.getUserInfo();
   },
   methods: {
+    //请求个人信息数据
     async getUserInfo() {
       const { data: res } = await getUserInfoById(2);
       this.baseForm = res.result_data;
@@ -131,6 +118,7 @@ export default {
     }
   },
   mounted() {
+    //粒子背景特效配置
     require("particles.js");
     // eslint-disable-next-line no-undef
     particlesJS("particles", particlesJson);
